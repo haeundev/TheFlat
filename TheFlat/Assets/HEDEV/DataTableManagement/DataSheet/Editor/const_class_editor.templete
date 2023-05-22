@@ -1,0 +1,21 @@
+using UnityEditor;
+using System;
+
+namespace {namespace_name}
+{
+    [CustomEditor(typeof({root_class_name}))]
+    public class {root_class_name}Editor : DataScriptEditor
+    {
+        public override string FileID => "{file_id_string}";
+        public override string SheetName => "{sheet_name_string}";
+        public override DataScript.DataType DataType => DataScript.DataType.Const;
+        public override Type SubClassType => typeof({sub_class_name});
+
+        public override void SetAssetData(string json)
+        {
+            var obj = target as {root_class_name};
+            obj.Data = DataScript.MakeObjectFromJsonString<{sub_class_name}>(json);
+        }
+    }
+}
+

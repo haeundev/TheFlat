@@ -1,0 +1,11 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+namespace {namespace_name}
+{
+    public class {root_class_name} : ScriptableObject
+    {
+        public List<{sub_class_name}> Values;
+    }
+}
+
