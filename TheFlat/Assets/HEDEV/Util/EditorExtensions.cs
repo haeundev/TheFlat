@@ -1,5 +1,6 @@
 using UnityEditor;
 
+#if UNITY_EDITOR
 namespace Proto.Util
 {
     public static class EditorExtensions
@@ -17,3 +18,4 @@ namespace Proto.Util
         }
     }
 }
+#endif

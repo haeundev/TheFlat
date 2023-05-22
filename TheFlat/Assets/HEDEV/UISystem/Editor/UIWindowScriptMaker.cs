@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Type = Proto.Util.Type;
 
+#if UNITY_EDITOR
 namespace Proto.UISystem
 {
     public class UIWindowScriptMaker : EditorWindow
@@ -444,3 +445,4 @@ namespace Proto.UISystem
         }
     }
 }
+#endif
