@@ -3,9 +3,12 @@ using UnityEngine;
 
 public enum SoundType
 {
+    BGM,
+    Wall,
+    OP,
     Radio,
-    Telephone,
-    
+    Phone,
+    Ambience
 }
 
 public class SoundSource : MonoBehaviour
