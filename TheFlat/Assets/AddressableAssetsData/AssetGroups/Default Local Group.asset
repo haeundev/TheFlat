@@ -25,6 +25,18 @@ MonoBehaviour:
     m_Address: Door_Open_2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 28852dc5fedb3734a89f00373b2415ad
+    m_Address: UI_Popup_NumberLock
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d2469d77c84a31547b314f692101aaab
+    m_Address: Menu_Buttons_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0e9bafe9929904d40b03d726cc6e9ba5
+    m_Address: UI_HUD_MissionList
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e4094269c2fcf6d45873837e6df357f5, type: 2}
   m_SchemaSet:

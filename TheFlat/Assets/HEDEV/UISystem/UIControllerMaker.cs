@@ -47,7 +47,7 @@ namespace Proto.UISystem
 
         private string uiWindowType = "";
 
-        [MenuItem("Tools/UI/2. UI Controller Maker", false , 2)]
+        [MenuItem("Tools/UI/UI Controller Maker", false , 2)]
         public static void ShowWindow()
         {
             GetWindow(typeof(UIControllerMaker));
@@ -130,7 +130,7 @@ namespace Proto.UISystem
             writer.WriteLine("        protected override void Awake()");
             writer.WriteLine("        {");
             writer.WriteLine("            Show();");
-            writer.WriteLine("            m_completeWindowSetting?.Invoke(this);");
+            writer.WriteLine("            _completeWindowSetting?.Invoke(this);");
             writer.WriteLine("        }");
         }
 
@@ -145,6 +145,7 @@ namespace Proto.UISystem
             {
                 writer.WriteLine($"//This is Auto Generated Code, Don't modify this script.");
                 writer.WriteLine("using System;");
+                writer.WriteLine("using Proto.UISystem;");
                 writer.WriteLine("");
                 writer.WriteLine("namespace " + defaultNamespaceName);
                 writer.WriteLine("{");
@@ -165,7 +166,7 @@ namespace Proto.UISystem
             writer.WriteLine("    {");
             writer.WriteLine("");
             writer.WriteLine($"        public override System.Type UIWindowType => typeof({uiWindowType});");
-            writer.WriteLine($"        public {uiWindowType} Window => _window as {uiWindowType};");
+            writer.WriteLine($"        public {uiWindowType} Window => window as {uiWindowType};");
             WriteChildren(writer);
             WriteOpen(writer);
             writer.WriteLine("    }");

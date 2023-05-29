@@ -11,9 +11,9 @@ namespace UI
 {
     public abstract class UIController
     {
-        private Action<UIController> _completeWindowSetting;
+        protected Action<UIController> _completeWindowSetting;
         private bool _waitClose;
-        private UIWindow _window;
+        public UIWindow window;
         public int ID;
         public bool IsOpenedWindow;
 
@@ -24,7 +24,7 @@ namespace UI
 
         public abstract Type UIWindowType { get; }
         public virtual UIType UIType => UIType.None;
-        public Transform WindowTransform => _window.transform;
+        public Transform WindowTransform => window.transform;
         public WindowOption WindowOption { get; private set; } = WindowOption.None;
 
         public bool LoadComplete { get; private set; }
@@ -33,9 +33,9 @@ namespace UI
         {
             get
             {
-                if (_window == null)
+                if (window == null)
                     return int.MaxValue;
-                return _window.SortingOrder;
+                return window.SortingOrder;
             }
         }
 
@@ -56,9 +56,9 @@ namespace UI
 
         public virtual void InitWindow(UIWindow window)
         {
-            _window = window;
-            _window.isRenewalUI = true;
-            _window.SetSortingOrder();
+            this.window = window;
+            this.window.isRenewalUI = true;
+            this.window.SetSortingOrder();
             UIWindowManager.GetSubWindows(() =>
             {
                 if (!_waitClose)
@@ -74,32 +74,32 @@ namespace UI
 
         private void CheckedDisableUI()
         {
-            var inputBlock = _window.GetComponent<UIInputBlock>();
+            var inputBlock = window.GetComponent<UIInputBlock>();
             if (inputBlock != null) inputBlock.OnOpenAndCheckedDisable();
         }
 
         public virtual void Hide()
         {
-            if (_window == null) return;
-            _window.gameObject.SetActive(false);
+            if (window == null) return;
+            window.gameObject.SetActive(false);
             OnHide();
         }
 
         public virtual void Show()
         {
-            _window.gameObject.SetActive(true);
+            window.gameObject.SetActive(true);
             CheckedDisableUI();
             OnShow();
         }
 
         public virtual void TemporaryHide()
         {
-            _window.HideLowSortingOrder();
+            window.HideLowSortingOrder();
         }
 
         public virtual void ReturnPrevOpenState()
         {
-            _window.PrevVisibleState();
+            window.PrevVisibleState();
         }
 
         public virtual void Close()
@@ -114,7 +114,7 @@ namespace UI
             {
                 foreach (var body in m_childrenBodies) body.CloseAction();
                 OnDestroyAfterClose();
-                _window.Close();
+                window.Close();
                 OnClose();
             }
             else
@@ -132,7 +132,7 @@ namespace UI
         {
             yield return new WaitUntil(() => LoadComplete);
             CloseAction();
-            _window.Close();
+            window.Close();
             OnClose();
         }
 
@@ -169,7 +169,7 @@ namespace UI
         {
             if (LoadComplete)
                 foreach (var body in m_childrenBodies)
-                    if (body._window.IsOpen)
+                    if (body.window.IsOpen)
                         body.OnShow();
 
             IsOpenedWindow = true;
@@ -179,7 +179,7 @@ namespace UI
         {
             if (LoadComplete)
                 foreach (var body in m_childrenBodies)
-                    if (body._window.IsOpen)
+                    if (body.window.IsOpen)
                         body.OnHide();
 
             IsOpenedWindow = false;

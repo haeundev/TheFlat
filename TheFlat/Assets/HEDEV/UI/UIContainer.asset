@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a69343b3d02604cb7117973ba732f4, type: 3}
   m_Name: UIContainer
   m_EditorClassIdentifier: 
-  UIList: []
+  UIList:
+  - Window: {fileID: 8693663798936924030, guid: 28852dc5fedb3734a89f00373b2415ad,
+      type: 3}
+    Path: UI_Popup_NumberLock
+  - Window: {fileID: 8393730185132421659, guid: 0e9bafe9929904d40b03d726cc6e9ba5,
+      type: 3}
+    Path: UI_HUD_MissionList

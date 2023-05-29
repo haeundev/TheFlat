@@ -8,6 +8,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Audio;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using AudioType = Proto.Enums.AudioType;
 
 namespace Proto.SoundSystem
@@ -77,6 +78,17 @@ namespace Proto.SoundSystem
         {
             _audioMixer = Resources.Load<AudioMixer>(AudioMixerName);
             _defaultSnapshot = _audioMixer.FindSnapshot(DefaultSnapshotName);
+        }
+        
+        public static IEnumerator PlaySimple(string path, AudioSource audioSource)
+        {
+            var handle = Addressables.LoadAssetAsync<AudioClip>(path);
+            yield return handle;
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+                audioSource.clip = handle.Result;
+            audioSource.Play();
+            yield return new WaitWhile(() => audioSource.isPlaying);
+            Addressables.Release(handle);
         }
 
         public static Audio Play(AudioType type, string name, Vector3 position, bool loop)

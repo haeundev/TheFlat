@@ -9,6 +9,12 @@ namespace Proto.Data
     {
         private static DataTableManager _instance;
 
+        [SerializeField] private Tasks tasks;
+        [SerializeField] private Rooms rooms;
+        
+        public static Tasks Tasks => _instance.tasks;
+        public static Rooms Rooms => _instance.rooms;
+        
         public static DataTableManager Instance
         {
             get

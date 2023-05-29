@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b4c8634c961634598c763faf95ad56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messages: {fileID: 11400000, guid: e1004932370d3af41a66bbcb74f8ad3a, type: 2}
-  playerConst: {fileID: 11400000, guid: ae292fc2f5a89b74095827449376ae52, type: 2}
+  tasks: {fileID: 11400000, guid: c36ce660f09d87b448da5a1996a0718c, type: 2}
+  rooms: {fileID: 11400000, guid: 7cc11993a61f30f4f9f5561e499d5a1c, type: 2}

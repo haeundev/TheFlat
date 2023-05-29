@@ -237,7 +237,7 @@ namespace Proto.UISystem
             return UIComponents[index].component;
         }
 
-        public int GetUICount => UIComponents.Count;
+        public int GetUICount => UIComponents?.Count ?? 0;
 
         public void RemoveAllUIEventListeners()
         {

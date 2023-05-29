@@ -155,8 +155,8 @@ namespace Editors.Datas
                 sw.WriteLine("using System;");
                 sw.WriteLine("using System.Collections.Generic;");
                 sw.WriteLine("using Proto.Enums;");
-                sw.WriteLine("using Newtonsoft.Json;");
-                sw.WriteLine("using Newtonsoft.Json.Converters;");
+                // sw.WriteLine("using Newtonsoft.Json;");
+                // sw.WriteLine("using Newtonsoft.Json.Converters;");
                 sw.WriteLine("using UnityEngine;");
                 sw.WriteLine("");
                 sw.WriteLine($"namespace {@namespace}");

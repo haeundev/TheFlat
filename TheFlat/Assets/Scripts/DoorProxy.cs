@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Proto.SoundSystem;
+using UI;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class DoorProxy : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class DoorProxy : MonoBehaviour
     private List<Renderer> _renderers;
     private Collider _collider;
     private AudioSource _audioSource;
+    private UI_Popup_NumberLock_Controller _quizUI;
     private bool _isDoorOpened;
     [SerializeField] private float proxDistance = 2f;
     [SerializeField] private bool isDoorUnlocked;
@@ -23,44 +23,51 @@ public class DoorProxy : MonoBehaviour
         _renderers = GetComponentsInChildren<Renderer>().ToList();
         _audioSource = gameObject.AddComponent<AudioSource>();
     }
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
             isDoorUnlocked = !isDoorUnlocked;
         }
-        
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             var currentDistance = Vector3.Distance(transform.position, _playerTransform.position);
             if (currentDistance > proxDistance)
                 return;
             Debug.Log($"{currentDistance}");
-            if (isDoorUnlocked == false)
+            if (isDoorUnlocked == false) // quiz not solved
             {
-                StartCoroutine(PlayAudioClip("Hand_ROCK_1"));
+                StartCoroutine(SoundService.PlaySimple("Hand_ROCK_1", _audioSource));
                 _isDoorOpened = false;
+                UIWindowService.OpenWindow<UI_Popup_NumberLock_Controller>(ui =>
+                {
+                    _quizUI = ui;
+                    ui.Window.OnUnlockQuizSuccess += OnUnlockQuizSuccess;
+                });
             }
             else // unlocked
             {
-                StartCoroutine(PlayAudioClip("Door_Open_2"));
-                _isDoorOpened = true;
-                _renderers.ForEach(p => p.enabled = false);
-                _collider.enabled = false;
+
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _quizUI?.Close();
+        }
+
+    }
+
+    private void OnUnlockQuizSuccess()
+    {
+        StartCoroutine(SoundService.PlaySimple("Door_Open_2", _audioSource));
+        _isDoorOpened = true;
+        _renderers.ForEach(p => p.enabled = false);
+        _collider.enabled = false;
+        _quizUI.Close();
     }
     
-    public IEnumerator PlayAudioClip(string path)
-    {
-        // Get and assign the AudioClips
-        var handle = Addressables.LoadAssetAsync<AudioClip>(path);
-        yield return handle;
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-            _audioSource.clip = handle.Result;
-        _audioSource.Play();
-        yield return new WaitWhile(() => _audioSource.isPlaying);
-        Addressables.Release(handle);
-    }
+    
 }
