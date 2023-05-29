@@ -373,11 +373,11 @@ public class FirstPersonController : MonoBehaviour
         if (playerCanMove)
         {
             var t = transform;
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(KeyCode.E))
             {
                 t.RotateAround(t.position, t.up, rotateSpeed * Time.deltaTime);
             }
-            else if (Input.GetKey(KeyCode.E))
+            else if (Input.GetKey(KeyCode.Q))
             {
                 t.RotateAround(t.position, t.up, -rotateSpeed * Time.deltaTime);
             }
