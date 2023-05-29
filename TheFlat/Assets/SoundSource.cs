@@ -7,7 +7,7 @@ public enum SoundType
     Wall,
     OP,
     Radio,
-    Telephone,
+    Phone,
     
 }
 
