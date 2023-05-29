@@ -8,7 +8,7 @@ public enum SoundType
     OP,
     Radio,
     Phone,
-    
+    Ambience
 }
 
 public class SoundSource : MonoBehaviour
