@@ -14,9 +14,11 @@ public class DoorProxy : MonoBehaviour
     private bool _isDoorOpened;
     [SerializeField] private float proxDistance = 2f;
     [SerializeField] private bool isDoorUnlocked;
+    [SerializeField] private GameObject light;
     
     private void Start()
     {
+        light.SetActive(isDoorUnlocked);
         _playerTransform = GameObject.FindWithTag("Player").transform;
         _collider = GetComponentInChildren<Collider>();
         _collider.enabled = true;
@@ -62,12 +64,17 @@ public class DoorProxy : MonoBehaviour
 
     private void OnUnlockQuizSuccess()
     {
+        UnlockDoor();
+    }
+
+    private void UnlockDoor()
+    {
+        isDoorUnlocked = true;
         StartCoroutine(SoundService.PlaySimple("Door_Open_2", _audioSource));
         _isDoorOpened = true;
         _renderers.ForEach(p => p.enabled = false);
         _collider.enabled = false;
         _quizUI.Close();
+        light.SetActive(isDoorUnlocked);
     }
-    
-    
 }
