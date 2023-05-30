@@ -19,6 +19,26 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-3916374616641014611
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 33fb19f47df95ad46afc61290e989048
+  m_EffectName: Project Acoustics Mixer
+  m_MixLevel: bb4f1777f36d7844080934be32cff731
+  m_Parameters:
+  - m_ParameterName: Wetness Adjust
+    m_GUID: 0fcf3acba2be96945833946d40670ecf
+  - m_ParameterName: RT60 Scale
+    m_GUID: 014fc92d3abd545438953fed488c1f87
+  - m_ParameterName: Spatializer
+    m_GUID: 943a4fc777758404590b181bb0b1cfed
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1997572406964368669
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -83,6 +103,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
+  - {fileID: -3916374616641014611}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -138,7 +159,8 @@ AudioMixerSnapshotController:
   m_Name: InGame
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 74002f660f1e743409fc04039c4cdcb2
-  m_FloatValues: {}
+  m_FloatValues:
+    943a4fc777758404590b181bb0b1cfed: 1
   m_TransitionOverrides: {}
 --- !u!243 &2842550461990719360
 AudioMixerGroupController:
