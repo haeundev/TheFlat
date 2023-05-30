@@ -11,9 +11,11 @@ namespace Proto.Data
 
         [SerializeField] private Tasks tasks;
         [SerializeField] private Rooms rooms;
+        [SerializeField] private SoundClips clips;
         
         public static Tasks Tasks => _instance.tasks;
         public static Rooms Rooms => _instance.rooms;
+        public static SoundClips SoundClips => _instance.clips;
         
         public static DataTableManager Instance
         {

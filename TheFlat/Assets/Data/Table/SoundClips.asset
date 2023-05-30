@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6730be2b31e4d2847807acbe109e18a5, type: 3}
+  m_Name: SoundClips
+  m_EditorClassIdentifier: 
+  Values:
+  - ID: 1
+    SoundType: Phone
+    Path: Assets/SoundSource/Telephone.wav
+  - ID: 2
+    SoundType: OP
+    Path: Assets/SoundSource/1.1_OP1_Fake_Dark_Laugh.wav
+  - ID: 3
+    SoundType: OP
+    Path: Assets/SoundSource/1_2_OP2_HospitalVentilator.wav
+  - ID: 4
+    SoundType: OP
+    Path: Assets/SoundSource/1_3_OP3_WaterDrops.wav
+  - ID: 5
+    SoundType: OP
+    Path: Assets/SoundSource/1_4_OP4_FemaleScream.wav
+  - ID: 6
+    SoundType: Radio
+    Path: Assets/SoundSource/2_SaChoo_mix.wav
+  - ID: 7
+    SoundType: BGM
+    Path: Assets/SoundSource/3_ConsonanceDissonance.wav
+  - ID: 8
+    SoundType: Phone
+    Path: Assets/SoundSource/4_Phone_mix.wav
+  - ID: 9
+    SoundType: Wall
+    Path: Assets/SoundSource/5_1_KILL_IceCubes.wav
+  - ID: 10
+    SoundType: Ambience
+    Path: Assets/SoundSource/5_2_KILL_IWKY.wav
+  - ID: 11
+    SoundType: Wall
+    Path: Assets/SoundSource/5_3_KILL_Kettle.wav
+  - ID: 12
+    SoundType: Wall
+    Path: Assets/SoundSource/5_4_KILL_Laugh.wav
+  - ID: 13
+    SoundType: Wall
+    Path: Assets/SoundSource/5_5_KILL_Lullaby.wav
+  - ID: 14
+    SoundType: 
+    Path: 
+  - ID: 15
+    SoundType: 
+    Path: 
+  - ID: 16
+    SoundType: 
+    Path: 
+  - ID: 17
+    SoundType: 
+    Path: 
+  - ID: 18
+    SoundType: 
+    Path: 
+  - ID: 19
+    SoundType: 
+    Path: 
+  - ID: 20
+    SoundType: 
+    Path: 
+  - ID: 21
+    SoundType: 
+    Path: 
+  - ID: 22
+    SoundType: 
+    Path: 
+  - ID: 23
+    SoundType: 
+    Path: 
+  - ID: 24
+    SoundType: 
+    Path: 
+  - ID: 25
+    SoundType: 
+    Path: 

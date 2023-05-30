@@ -91,6 +91,27 @@ namespace Proto.SoundSystem
             Addressables.Release(handle);
         }
 
+        public static IEnumerator Load(string path, AudioSource audioSource, bool playImmediately = false)
+        {
+            var handle = Addressables.LoadAssetAsync<AudioClip>(path);
+            yield return handle;
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+                audioSource.clip = handle.Result;
+            else
+                Debug.LogError($"Sound does not exist: {path}");
+
+            if (playImmediately)
+            {
+                audioSource.Play();
+                yield return new WaitWhile(() => audioSource.isPlaying);
+                Addressables.Release(handle);
+            }
+            else
+            {
+                Addressables.Release(handle);
+            }
+        }
+
         public static Audio Play(AudioType type, string name, Vector3 position, bool loop)
         {
             if (_destroyed)
